@@ -9,7 +9,7 @@ import (
 )
 
 func send(word string) {
-	var delay int = rand.Intn(10)
+	var delay int = rand.Intn(10) + 1
 
 	opts := MQTT.NewClientOptions().AddBroker("tcp://localhost:1883")
 	c := MQTT.NewClient(opts)
