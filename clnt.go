@@ -27,8 +27,17 @@ func send(word string) {
 }
 
 func main() {
+	m := make(map[string]bool)
 	rand.Seed(int64(time.Now().Nanosecond()))
 	for _,str := range os.Args[1:] {
+		if !m[str] {
+			m[str] = true
+		} else {
+			fmt.Println("Duplicate word:", str);
+			os.Exit(1)
+		}
+	}
+	for str := range m {
 		go send(str)
 	}
 	for {
